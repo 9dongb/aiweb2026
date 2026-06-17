@@ -21,6 +21,9 @@
 
       <h1>Meeting Flow</h1>
       <p class="tagline">회의 후속 업무를 자동화합니다.</p>
+      <p class="hero-summary">
+        회의록을 요약, 결정사항, 액션 아이템, 일정/문서/메일 후속 처리로 연결하는 AI 업무 도구입니다.
+      </p>
     </div>
   </header>
 
@@ -28,6 +31,11 @@
 
     <!-- ============ 데모 카드 ============ -->
     <section class="demo-card">
+      <div class="demo-caption">
+        <strong>제품 화면 미리보기</strong>
+        <span>AI 분석 결과, 액션 아이템, 외부 연동 상태를 한 화면에서 확인합니다.</span>
+      </div>
+
       <!-- ⬇⬇⬇ screenshot.png 를 본인 프로젝트 화면 캡쳐로 교체 ⬇⬇⬇ -->
       <img class="screenshot" src="meeting-flow.png" alt="[MeetingFlow] 데모 화면" />
       <!-- ⬆⬆⬆ screenshot.png 를 본인 프로젝트 화면 캡쳐로 교체 ⬆⬆⬆ -->
@@ -35,13 +43,13 @@
       <div class="cta">
         <!-- ⬇⬇⬇ 다음 주(10주차) 데모 띄운 후 href="#" 를 진짜 도메인으로 ⬇⬇⬇ -->
         <a class="btn btn-primary" href="https://meetingflow-ai.xyz">
-          ▶ Live Demo
+          서비스 데모 보기
         </a>
         <!-- ⬆⬆⬆ 다음 주에 href="https://meetingflow-ai.xyz" 로 변경 ⬆⬆⬆ -->
 
         <!-- ⬇⬇⬇ 본인 GitHub 리포 URL 로 교체 ⬇⬇⬇ -->
         <a class="btn btn-secondary" href="https://github.com/9dongb/meeting-flow" target="_blank" rel="noopener">
-          ⌨ Source on GitHub
+          GitHub 코드 보기
         </a>
         <!-- ⬆⬆⬆ 본인 GitHub 리포 URL 로 교체 ⬆⬆⬆ -->
       </div>
@@ -49,6 +57,24 @@
 
     <!-- ============ 본문 (contents.md 인라인 렌더) ============ -->
     <section class="content">
+      <div class="summary-grid" aria-label="MeetingFlow 핵심 처리 흐름">
+        <article class="summary-card">
+          <span class="summary-kicker">Input</span>
+          <h2>회의록 입력</h2>
+          <p>텍스트를 붙여넣거나 파일을 업로드해 회의 정보를 한곳에 모읍니다.</p>
+        </article>
+        <article class="summary-card">
+          <span class="summary-kicker">AI Analysis</span>
+          <h2>업무 단위 분석</h2>
+          <p>요약, 결정사항, 담당자, 마감일, 우선순위를 구조화합니다.</p>
+        </article>
+        <article class="summary-card">
+          <span class="summary-kicker">Output</span>
+          <h2>후속 업무 관리 및 자동화</h2>
+          <p>DashBoard 관리, Calendar, Notion, Email 초안 생성으로 회의 이후 행동까지 이어갑니다.</p>
+        </article>
+      </div>
+
       <!-- ⬇⬇⬇ 같은 폴더의 contents.md 를 수정하면 자동 반영 ⬇⬇⬇ -->
       <zero-md src="contents.md" no-shadow></zero-md>
       <!-- ⬆⬆⬆ 같은 폴더의 contents.md 를 수정하면 자동 반영 ⬆⬆⬆ -->
@@ -56,7 +82,7 @@
 
     <!-- ============ Giscus 댓글 (8장에서 추가) ============ -->
     <section id="comments" class="comments">
-      <h2>💬 이 프로젝트 어떠세요?</h2>
+      <h2>프로젝트 피드백 남기기</h2>
       <p class="comments-note">
         GitHub 계정으로 로그인하면 댓글이 본인 리포의 GitHub Discussions에 자동 저장됩니다.
       </p>

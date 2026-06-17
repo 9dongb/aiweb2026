@@ -89,6 +89,13 @@ body {
   color: var(--muted);
   font-weight: 400;
 }
+.hero-summary {
+  max-width: 640px;
+  margin: 1rem auto 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
 
 /* ============ 데모 카드 ============ */
 .demo-card {
@@ -99,6 +106,27 @@ body {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
+}
+
+.demo-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.demo-caption strong {
+  flex: 0 0 auto;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.demo-caption span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: right;
 }
 
 .screenshot {
@@ -181,6 +209,42 @@ section p {
 }
 
 /* ============ Content (contents.md 인라인 렌더) ============ */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+.summary-card {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow-tight);
+}
+.summary-kicker {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--accent-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.summary-card h2 {
+  margin: 0 0 0.45rem;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.summary-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
 .content zero-md {
   display: block;
   color: var(--ink);
@@ -199,13 +263,17 @@ section p {
 .content zero-md h2 {
   font-size: clamp(1.3rem, 1rem + 1vw, 1.7rem);
   font-weight: 700;
-  margin: 2.2rem 0 0.8rem;
+  margin: 2.4rem 0 0.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
   color: var(--ink);
   letter-spacing: 0;
 }
 .content zero-md h1:first-child,
 .content zero-md h2:first-child {
   margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }
 .content zero-md h3 {
   font-size: 1.1rem;
@@ -242,13 +310,15 @@ section p {
 }
 .content zero-md table {
   border-collapse: collapse;
+  display: block;
   width: 100%;
   margin: 0.8rem 0 1.4rem;
   font-size: 0.95rem;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;
+  overflow-x: auto;
+  white-space: normal;
 }
 .content zero-md th,
 .content zero-md td {
@@ -257,6 +327,7 @@ section p {
   text-align: left;
   vertical-align: top;
   background: transparent;
+  min-width: 10rem;
 }
 .content zero-md th {
   background: var(--surface);
@@ -318,8 +389,19 @@ footer a:hover {
 }
 
 /* ============ 모바일 ============ */
+@media (max-width: 720px) {
+  .summary-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 480px) {
+  .hero-summary { font-size: 0.95rem; }
   .demo-card { margin-top: -1.5rem; border-radius: 8px; }
+  .demo-caption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .demo-caption span { text-align: left; }
   .cta { padding: 1rem; flex-direction: column; }
   .btn { justify-content: center; width: 100%; }
 }
