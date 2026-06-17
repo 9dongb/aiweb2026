@@ -1,26 +1,32 @@
 /* ============ 디자인 토큰 ============ */
 :root {
-  --accent: #f97316;
-  --accent2: #0ea5e9;
-  --ink: #1a1a2e;
-  --muted: #64748b;
-  --bg: #fafafa;
+  --accent: #5e6ad2;
+  --accent-dark: #4f58c4;
+  --accent2: #22d3ee;
+  --ink: #101012;
+  --muted: #686b76;
+  --bg: #f7f7f8;
   --card: #ffffff;
-  --border: #e5e7eb;
-  --green: #10b981;
+  --surface: #fbfbfc;
+  --border: #e6e6e8;
+  --green: #059669;
+  --amber: #b45309;
 
   --space-section: clamp(2.5rem, 2rem + 3vw, 5rem);
-  --container-max: 800px;
-  --radius: 12px;
+  --container-max: 960px;
+  --radius: 8px;
+  --shadow-soft: 0 16px 50px rgba(15, 23, 42, 0.08);
+  --shadow-tight: 0 1px 2px rgba(16, 16, 18, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --ink: #f8fafc;
     --muted: #94a3b8;
-    --bg: #0f172a;
-    --card: #1e293b;
-    --border: #334155;
+    --bg: #121217;
+    --card: #18181f;
+    --surface: #202029;
+    --border: #30303a;
   }
 }
 
@@ -30,10 +36,12 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: 'Apple SD Gothic Neo', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--bg);
+  background:
+    linear-gradient(180deg, #fbfbfc 0%, var(--bg) 42%, #f3f3f5 100%);
   color: var(--ink);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
 
 .container {
@@ -44,61 +52,85 @@ body {
 
 /* ============ HERO ============ */
 .hero {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  color: white;
-  padding: clamp(3rem, 2rem + 5vw, 6rem) 0 clamp(2.5rem, 2rem + 4vw, 5rem);
+  position: relative;
+  overflow: hidden;
+  color: var(--ink);
+  padding: clamp(3rem, 2rem + 5vw, 5.8rem) 0 clamp(3rem, 2rem + 4vw, 5rem);
   text-align: center;
+  border-bottom: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 247, 248, 0.92));
+}
+.hero .container::before {
+  content: "AI MEETING WORKSPACE";
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  margin-bottom: 1.25rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--accent-dark);
+  box-shadow: var(--shadow-tight);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 .hero h1 {
   margin: 0 0 0.5rem;
-  font-size: clamp(1.8rem, 1.2rem + 2.5vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 1.35rem + 2.6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 0;
 }
 .hero .tagline {
   margin: 0;
-  font-size: clamp(1rem, 0.85rem + 0.6vw, 1.25rem);
-  opacity: 0.95;
+  font-size: clamp(1rem, 0.85rem + 0.6vw, 1.18rem);
+  color: var(--muted);
   font-weight: 400;
 }
 
 /* ============ 데모 카드 ============ */
 .demo-card {
-  margin-top: -2.5rem;
+  margin-top: -2rem;
   margin-bottom: var(--space-section);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-soft);
 }
 
 .screenshot {
   display: block;
   width: 100%;
   height: auto;
-  background: #f1f5f9;
+  background: var(--surface);
   border-bottom: 1px solid var(--border);
 }
 
 .cta {
-  padding: 1.5rem;
+  padding: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: center;
+  background: var(--surface);
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.75rem 1.4rem;
-  border-radius: 999px;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border-radius: 6px;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--shadow-tight);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 .btn-primary {
   background: var(--accent);
@@ -110,17 +142,18 @@ body {
   opacity: 0.7;
 }
 .btn-primary:hover:not([aria-disabled="true"]) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(249, 115, 22, 0.35);
+  background: var(--accent-dark);
+  transform: translateY(-1px);
 }
 .btn-secondary {
   background: var(--card);
   color: var(--ink);
-  border: 1.5px solid var(--border);
+  border: 1px solid var(--border);
 }
 .btn-secondary:hover {
-  border-color: var(--accent2);
-  color: var(--accent2);
+  border-color: rgba(94, 106, 210, 0.42);
+  color: var(--accent-dark);
+  background: #f7f7f8;
 }
 
 .badge {
@@ -140,7 +173,7 @@ section h2 {
   font-size: clamp(1.3rem, 1rem + 1vw, 1.8rem);
   margin: 0 0 1rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 section p {
   color: var(--muted);
@@ -151,7 +184,11 @@ section p {
 .content zero-md {
   display: block;
   color: var(--ink);
-  background: transparent;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-tight);
+  padding: clamp(1.1rem, 0.75rem + 1.8vw, 2rem);
 }
 .content zero-md .markdown-body,
 .content zero-md > div {
@@ -164,7 +201,7 @@ section p {
   font-weight: 700;
   margin: 2.2rem 0 0.8rem;
   color: var(--ink);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .content zero-md h1:first-child,
 .content zero-md h2:first-child {
@@ -174,7 +211,7 @@ section p {
   font-size: 1.1rem;
   font-weight: 600;
   margin: 1.4rem 0 0.5rem;
-  color: var(--ink);
+  color: var(--accent-dark);
 }
 .content zero-md p {
   font-size: 1rem;
@@ -196,8 +233,8 @@ section p {
   margin-right: 0.5rem;
 }
 .content zero-md code {
-  background: rgba(14, 165, 233, 0.1);
-  color: var(--accent2);
+  background: rgba(94, 106, 210, 0.09);
+  color: var(--accent-dark);
   padding: 0.15em 0.4em;
   border-radius: 4px;
   font-family: Menlo, Monaco, 'Courier New', monospace;
@@ -208,7 +245,10 @@ section p {
   width: 100%;
   margin: 0.8rem 0 1.4rem;
   font-size: 0.95rem;
-  background: transparent;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 .content zero-md th,
 .content zero-md td {
@@ -219,7 +259,7 @@ section p {
   background: transparent;
 }
 .content zero-md th {
-  background: rgba(249, 115, 22, 0.08);
+  background: var(--surface);
   font-weight: 600;
 }
 .content zero-md hr {
@@ -228,10 +268,12 @@ section p {
   margin: 2rem 0;
 }
 .content zero-md blockquote {
-  border-left: 3px solid var(--accent2);
+  border-left: 3px solid var(--accent);
   margin: 0.8rem 0;
   padding: 0.4rem 1rem;
   color: var(--muted);
+  background: rgba(94, 106, 210, 0.05);
+  border-radius: 0 6px 6px 0;
 }
 .content zero-md strong {
   color: var(--ink);
@@ -239,6 +281,13 @@ section p {
 }
 
 /* ============ Comments ============ */
+.comments {
+  padding: clamp(1.1rem, 0.75rem + 1.8vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow-tight);
+}
 .comments .comments-note {
   font-size: 0.9rem;
   margin: 0 0 1.5rem;
@@ -253,6 +302,7 @@ footer {
   border-top: 1px solid var(--border);
   padding: 2rem 0 3rem;
   text-align: center;
+  background: var(--surface);
 }
 footer p {
   color: var(--muted);
@@ -260,7 +310,7 @@ footer p {
   margin: 0;
 }
 footer a {
-  color: var(--accent2);
+  color: var(--accent-dark);
   text-decoration: none;
 }
 footer a:hover {
